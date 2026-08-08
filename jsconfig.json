@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
+      // 输入@自动联想src目录
       "@/*": ["./src/*"]
     }
   },
