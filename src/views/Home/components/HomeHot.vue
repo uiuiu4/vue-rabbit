@@ -45,13 +45,11 @@
 .goods-list {
   display: flex;
   justify-content: space-between;
-  height: 406px;
+  height: 426px;
 
   li {
     width: 306px;
     height: 406px;
-
-    background: #f0f9f4;
     transition: all .5s;
 
     &:hover {
@@ -68,13 +66,11 @@
       font-size: 22px;
       padding-top: 12px;
       text-align: center;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
     }
 
-    .price {
-      color: $priceColor;
+    .desc {
+      color: #999;
+      font-size: 16px;
     }
   }
 }
