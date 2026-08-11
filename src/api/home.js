@@ -25,8 +25,15 @@ export function findNewAPI(){
  * @param {*}
  * @return {*}
  */
-export const getHotAPI = () => {
+export function getHotAPI(){
   return httpInstance({
     url:'/home/hot'
+  })
+}
+
+//获取产品列表
+export function getGoodstAPI(){
+  return httpInstance({
+    url:'/home/goods'
   })
 }
