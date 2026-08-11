@@ -15,7 +15,7 @@
 </script>
 
 <template>
-    <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质靠谱">
+    <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
       <ul class="goods-list">
         <li v-for="item in hotList" :key="item.id">
           <RouterLink to="/">
