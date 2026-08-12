@@ -1,6 +1,5 @@
 <script setup>
-  import { getBannerAPI } from '@/api/home';
-import { refDebounced } from '@vueuse/core';
+  import { getBannerAPI } from '@/api/home'
   import {ref,onMounted} from 'vue'
 
   const bannerList = ref([])
