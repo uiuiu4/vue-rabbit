@@ -17,7 +17,7 @@
           <RouterLink to="/">首页</RouterLink>
         </li>
         <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
-          <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+          <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
         </li>
       </ul>
       <div class="search">
@@ -129,6 +129,10 @@
         border-radius: 10px;
         font-family: Arial;
       }
+    }
+    .active{
+      color: $xtxColor;
+      border-bottom: 1px solid $xtxColor;
     }
   }
 }
