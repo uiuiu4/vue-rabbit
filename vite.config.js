@@ -23,6 +23,7 @@ export default defineConfig({
         ElementPlusResolver({ importStyle: 'sass' })
       ],
     }),
+    
   ],
   resolve: {
     //实际的路径转换 @ -> src
