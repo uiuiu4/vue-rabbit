@@ -1,5 +1,4 @@
 import request from '@/utils/http'
-import { id } from 'element-plus/es/locales.mjs'
 
 export function getCategoryAPI(id){
   return request({
