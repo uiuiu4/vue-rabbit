@@ -1,5 +1,8 @@
 //axios基础的封装
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
+import 'element-plus/theme-chalk/el-message.css'
+import { useRouter } from 'vue-router'
 
 const httpInstance = axios.create({
   baseURL:'https://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -13,7 +16,10 @@ httpInstance.interceptors.request.use(config => {
 
 // axios响应式拦截器
 httpInstance.interceptors.response.use(res => res.data, e => {
+  //统一错误提示
+  ElMessage({type:'warning',message: e.response.data.message})
   return Promise.reject(e)
+  
 })
 
 export default httpInstance
