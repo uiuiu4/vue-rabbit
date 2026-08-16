@@ -1,9 +1,11 @@
 <script setup>
 import {ref} from 'vue'
-import { loginAPI } from '@/api/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 
 const form = ref({
   account: '',
@@ -13,7 +15,7 @@ const form = ref({
 })
 
 const rules = {
-  account:[
+  account:[ 
     {required: true, message: '用户不能为空', trigger: 'blur'}
   ],
   password:[
@@ -38,13 +40,12 @@ const rules = {
  const formRef = ref(null)
  const router = useRouter()
  const doLogin = () => {
+  const {account,password} = form.value
   //调用实例方法
   formRef.value.validate(async (valid)=>{
     //valid:所有表单都通过校验 才为true
     if(valid){
-      const {account,password} = form.value
-      const res = await loginAPI({account,password})
-      console.log(res)
+      await userStore.getUserInfo({ account , password})
       //1.提示用户
       ElMessage({type:'success',message:'登录成功'})
       //2.跳转首页
