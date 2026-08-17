@@ -1,6 +1,5 @@
-import { Goods } from "@element-plus/icons-vue";
 import { defineStore } from "pinia";
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export const useCartStore = defineStore('car',()=>{
   // 1.定义state-carList
@@ -27,10 +26,18 @@ export const useCartStore = defineStore('car',()=>{
     const idx = cartList.value.findIndex((item)=>skuId === item.id)
     cartList.value.splice(idx,1)
   }
+  
+  //计算属性
+  //1.总的数量 所有项的count之和
+  const allCount = computed(() => cartList.value.reduce((a,c) => a + c.count, 0))
+  //2.总价 所有项的count*price之和
+  const allPrice = computed(() => cartList.value.reduce((a,c) => a + c.count * c.price, 0))
   return {
     cartList,
     addCart,
-    delCart
+    delCart,
+    allCount,
+    allPrice
   }
 },{
   persist: true,
