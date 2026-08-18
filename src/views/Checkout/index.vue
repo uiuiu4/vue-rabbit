@@ -10,7 +10,7 @@ const getCheckInfo = async() => {
   //适配默认地址
   //从地址列表中筛选 isDefault === 0 那一项
   const item = checkInfo.value.userAddresses.find((item) => item.isDefault === 1 )
-   curAddress.value = item
+  curAddress.value = item
 }
 
 onMounted(() => getCheckInfo())
