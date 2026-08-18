@@ -1,8 +1,9 @@
 //管理用户数据相关
-import { loginAPI } from "@/api/user";
-import { defineStore } from "pinia";
+import { loginAPI } from "@/api/user"
+import { defineStore } from "pinia"
 import {ref} from 'vue'
 import { useCartStore } from './carStore'
+import { mergeCartAPI } from '@/api/cart'
 
 export const useUserStore = defineStore('user',()=>{
   const cartStore = useCartStore()
@@ -13,6 +14,15 @@ export const useUserStore = defineStore('user',()=>{
   const getUserInfo = async({account,password})=>{
     const res = await loginAPI({account,password})
     userInfo.value = res.result
+    //合并购物车操作
+    await mergeCartAPI(cartStore.cartList.map(item => {
+      return {
+        skuId: item.skuId,
+        selected: item.selected,
+        count: item.count
+      }
+    }))
+    cartStore.updateNewList()
   }
   //退出时清除用户数据
   const clearUserInfo = () =>{
